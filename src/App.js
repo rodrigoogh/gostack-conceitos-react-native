@@ -41,15 +41,15 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <FlatList
           data={repositories}
-          keyExtractor={repository => repository.id}
+          keyExtractor={item => item.id.toString()}
           renderItem={({item: repository}) => {
             return (
-              <View style={styles.repositoryContainer} key={repository.id}>
+              <View style={styles.repositoryContainer}>
                 <Text style={styles.repository}>{repository.title}</Text>
 
                 <View style={styles.techsContainer}>
-                  {repository.techs.map(tech => (
-                    <Text style={styles.tech}>
+                  {repository.techs.map((tech, index) => (
+                    <Text key={`${tech}-${index}`} style={styles.tech}>
                       {tech}
                     </Text>
                   ))}
