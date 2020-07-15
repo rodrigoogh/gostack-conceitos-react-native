@@ -41,6 +41,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <FlatList
           data={repositories}
+          keyExtractor={repository => repository.id}
           renderItem={({item: repository}) => {
             return (
               <View style={styles.repositoryContainer} key={repository.id}>
